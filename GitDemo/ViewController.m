@@ -28,6 +28,11 @@
     
 }
 
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    _bannerScrollView.frame = self.view.bounds;
+}
+
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
@@ -37,7 +42,7 @@
 
 - (NSMutableArray *)dataArray {
     
-    if (_dataArray) {
+    if (!_dataArray) {
         _dataArray = [NSMutableArray array];
         for (int i = 0; i < 3; i++) {
             Banner *banner = [[Banner alloc] init];

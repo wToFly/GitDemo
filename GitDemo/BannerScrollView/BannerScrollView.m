@@ -24,8 +24,8 @@
 @interface BannerView ()
 
 @property (nonatomic, strong) Banner *banner;
-@property (nonatomic, weak) UIImageView *imageView;
-@property (nonatomic, weak) UILabel *label;
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UILabel *label;
 
 @end
 
@@ -37,6 +37,7 @@
     if (!self) {
         return nil;
     }
+    [self createUI];
     
     return self;
     
@@ -104,6 +105,8 @@
     [self initialization];
      [self createUI];
     [self reloadData];
+    _pageControl.numberOfPages = self.bannerArray.count;
+    _pageControl.currentPage = 0;
     
     return self;
     
@@ -127,11 +130,15 @@
     
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.pagingEnabled = YES;
+    scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.delegate = self;
     [self addSubview:scrollView];
     _scrollView = scrollView;
     
     UIPageControl *pageControl = [[UIPageControl alloc] init];
+    pageControl.pageIndicatorTintColor = [UIColor redColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
     [self addSubview:pageControl];
     _pageControl = pageControl;
     
@@ -167,8 +174,13 @@
     
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    [self reloadLayout];
+    
+}
+
+- (void)reloadLayout {
     
     _scrollView.frame = self.bounds;
     
@@ -177,6 +189,8 @@
     _bannerView1.frame = CGRectMake(0, 0, _scrollView.bounds.size.width, _scrollView.bounds.size.height);
     _bannerView2.frame = CGRectMake(_scrollView.bounds.size.width, 0, _scrollView.bounds.size.width, _scrollView.bounds.size.height);
     _bannerView3.frame = CGRectMake(_scrollView.bounds.size.width * 2, 0, _scrollView.bounds.size.width, _scrollView.bounds.size.height);
+    [_scrollView setContentSize:CGSizeMake(3 * _scrollView.bounds.size.width, _scrollView.bounds.size.height)];
+    [_scrollView setContentOffset:CGPointMake(_scrollView.bounds.size.width, 0)];
     
 }
 
