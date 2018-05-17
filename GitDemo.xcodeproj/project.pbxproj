@@ -13,6 +13,7 @@
 		3120112620ABEAEC005A7CB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3120112520ABEAEC005A7CB5 /* Assets.xcassets */; };
 		3120112920ABEAEC005A7CB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3120112720ABEAEC005A7CB5 /* LaunchScreen.storyboard */; };
 		3120112C20ABEAEC005A7CB5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3120112B20ABEAEC005A7CB5 /* main.m */; };
+		31BBAF6820AD7ACE00748CCE /* BannerScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 31BBAF6720AD7ACE00748CCE /* BannerScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		3120112820ABEAEC005A7CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3120112A20ABEAEC005A7CB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3120112B20ABEAEC005A7CB5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		31BBAF6620AD7ACE00748CCE /* BannerScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerScrollView.h; sourceTree = "<group>"; };
+		31BBAF6720AD7ACE00748CCE /* BannerScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 		3120111B20ABEAEC005A7CB5 /* GitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				31BBAF6520AD7AA800748CCE /* BannerScrollView */,
 				3120111C20ABEAEC005A7CB5 /* AppDelegate.h */,
 				3120111D20ABEAEC005A7CB5 /* AppDelegate.m */,
 				3120111F20ABEAEC005A7CB5 /* ViewController.h */,
@@ -69,6 +73,15 @@
 				3120112B20ABEAEC005A7CB5 /* main.m */,
 			);
 			path = GitDemo;
+			sourceTree = "<group>";
+		};
+		31BBAF6520AD7AA800748CCE /* BannerScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				31BBAF6620AD7ACE00748CCE /* BannerScrollView.h */,
+				31BBAF6720AD7ACE00748CCE /* BannerScrollView.m */,
+			);
+			path = BannerScrollView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3120112120ABEAEC005A7CB5 /* ViewController.m in Sources */,
+				31BBAF6820AD7ACE00748CCE /* BannerScrollView.m in Sources */,
 				3120112C20ABEAEC005A7CB5 /* main.m in Sources */,
 				3120111E20ABEAEC005A7CB5 /* AppDelegate.m in Sources */,
 			);
