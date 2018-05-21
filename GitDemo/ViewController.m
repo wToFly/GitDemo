@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "BannerScrollView/BannerScrollView.h"
 
-@interface ViewController ()
+@interface ViewController () <BannerScrollViewDelegate>
 
 @property (nonatomic, weak) BannerScrollView *bannerScrollView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -22,22 +22,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    BannerScrollView *bannerScrollView = [[BannerScrollView alloc] initWithBannerArray:self.dataArray];
+    BannerScrollView *bannerScrollView = [[BannerScrollView alloc] init];
+    bannerScrollView.delegate = self;
+    bannerScrollView.bannerArray = self.dataArray;
+    bannerScrollView.autoScroll = NO;
+    bannerScrollView.titleTextColor = [UIColor blackColor];
     [self.view addSubview:bannerScrollView];
     _bannerScrollView = bannerScrollView;
     
-}
-
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
-    _bannerScrollView.frame = self.view.bounds;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        _bannerScrollView.bannerTitlePosition = BannerTitlePositionTop;
+        _bannerScrollView.titleTextFont = [UIFont systemFontOfSize:30];
+        _bannerScrollView.titleTextColor = [UIColor redColor];
+        _bannerScrollView.titleTextAlignment = NSTextAlignmentCenter;
+        
+    });
+    
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
-    _bannerScrollView.frame = self.view.bounds;
+    _bannerScrollView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
     
+}
+
+#pragma mark - BannerScrollViewDelegate
+- (void)bannerScrollViewDidSelectItemAtIndex:(NSInteger)index {
+    NSLog(@"%ld", (long)index);
 }
 
 - (NSMutableArray *)dataArray {

@@ -16,11 +16,33 @@
 
 @end
 
+typedef NS_ENUM(NSInteger, BannerTitlePosition) {
+    BannerTitlePositionBottom = 0,
+    BannerTitlePositionTop,
+};
+
+@protocol BannerScrollViewDelegate <NSObject>
+
+@optional
+- (void)bannerScrollViewDidSelectItemAtIndex:(NSInteger)index;
+
+@end
+
 @interface BannerScrollView : UIView
 
-@property (readonly, nonatomic, copy) NSArray<Banner *> *bannerArray;
+@property (nonatomic, weak) id<BannerScrollViewDelegate> delegate;
 
+@property (nonatomic, copy) NSArray<Banner *> *bannerArray;
+@property (nonatomic, strong) UIColor *currentPageDotColor;
+@property (nonatomic, strong) UIColor *pageDotColor;
 
-- (instancetype)initWithBannerArray:(NSArray<Banner *> *)bannerArray;
+@property (nonatomic, strong) UIColor *titleTextColor;
+@property (nonatomic, strong) UIFont *titleTextFont;
+@property (nonatomic, assign) CGFloat titleHeight;
+@property (nonatomic, assign) BannerTitlePosition bannerTitlePosition;
+@property (nonatomic, assign) NSTextAlignment titleTextAlignment;
+
+@property (nonatomic, assign) BOOL autoScroll;
+@property (nonatomic, assign) NSTimeInterval autoScrollTimeInterval;
 
 @end
